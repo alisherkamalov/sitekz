@@ -1,7 +1,6 @@
 import flet as ft
 import re
 import time
-import threading
 from header import menu_button,our_number,our_services,profile,photo,darkening_photo,logo_container,header_photo,header_container
 from city import city1_container,city2_container,city3_container,city_containers
 from body import cityes
@@ -15,10 +14,8 @@ from start_auth_cont import st_auth
 from endheader import end_header,black_container,top_container
 from profilecontainers import navigation_bar,profile_cont
 from adaptive_for_big_window import add_home_big1,big_window,add_home_big2
-from supabase import create_client
 from reg_and_auth_container import sign_up,back,sign_up2,entry_pass_reg,desc_pass_reg,desc_pass_auth,auth_cont,reg_cont,sign_in,entry_pass_auth,entry_first_name_reg,entry_last_name_reg,entry_login_auth,entry_login_reg,entry_phone_num_reg
 from adaptive import pc,mobile,laptop
-from base import add_account_to_base,key,url
 from mho import menu_header_open_part1_init, menu_header_open_part2_init, menu_header_open_part3_init, menu_header_open_part4_init, menu_header_open_part5_init
 from mhc import menu_header_close_part1_init,menu_header_close_part2_init,menu_header_close_part3_init,menu_header_close_part4_init,menu_header_close_part5_init
 
@@ -30,10 +27,9 @@ def main(page: ft.Page):
         page.padding = 0
         page.spacing = 0
         page.clean()
-        supabase = create_client(url, key)
-        adaptive_text = ft.Text(f'{page.width}',color=ft.colors.RED,bottom=50,right=50, size=50)
+        adaptive_text = ft.Text(f'{page.width}',color=ft.colors.RED,bottom=50,right=50, size=50,opacity=0)
         page.overlay.append(adaptive_text)
-            
+        
         def routing_to_auth(event):
             
             page.route = f'/authorization/'
@@ -121,8 +117,7 @@ def main(page: ft.Page):
             page.clean()
             navigation_bar.opacity = 0
             navigation_bar.offset = ft.transform.Offset(-0.5,0)
-            id = supabase.table('users').select('id').execute()
-            page.route = "/profile/{}/".format(id.data[0]['id'])
+            page.route = "/profile/"
             page.add(add_profile)
             header_container.opacity = 1
             page.update()
@@ -150,43 +145,42 @@ def main(page: ft.Page):
                 desc_pass_reg.opacity = 1
                 page.update()
                 
-                response_reg = supabase.table('users').select('*').eq('login',login_reg).execute()
+                
 
                  # Проверка, найден ли пользователь
-                if response_reg.data:
-                    reg_cont.opacity = 0
-                    page.update()
-                    time.sleep(0.5)
-                    reg_cont.content=ft.Column([
-                        ft.Row([
-                            ft.Image(
+                
+                reg_cont.opacity = 0
+                page.update()
+                time.sleep(0.5)
+                reg_cont.content=ft.Column([
+                    ft.Row([
+                        ft.Image(
                                 src='not new account.png'
-                            )
-                        ],expand=True,alignment=ft.MainAxisAlignment.CENTER),
-                        ft.Row([
-                            ft.Text(
-                                f'Данный аккаунт уже\n       существует!',
-                                weight=ft.FontWeight.W_700,
-                                size=20,
-                                color=ft.colors.BLACK,
-                                offset=ft.transform.Offset(0,-1)
-                            ),
-                        ],expand=True,alignment=ft.MainAxisAlignment.CENTER),
-                    ])
-                    page.update()
-                    reg_cont.opacity = 1
-                    page.update()
-                    time.sleep(2)
-                    reg_cont.opacity = 0
-                    page.update()
-                    time.sleep(0.5)
-                    reg_cont.content=st_reg
-                    page.update()
-                    reg_cont.opacity = 1
-                    page.update()
-                    time.sleep(0.5)
-                else: 
-                    add_account_to_base()
+                        )
+                    ],expand=True,alignment=ft.MainAxisAlignment.CENTER),
+                    ft.Row([
+                        ft.Text(
+                            f'Данный аккаунт уже\n       существует!',
+                            weight=ft.FontWeight.W_700,
+                            size=20,
+                            color=ft.colors.BLACK,
+                            offset=ft.transform.Offset(0,-1)
+                        ),
+                    ],expand=True,alignment=ft.MainAxisAlignment.CENTER),
+                ])
+                page.update()
+                reg_cont.opacity = 1
+                page.update()
+                time.sleep(2)
+                reg_cont.opacity = 0
+                page.update()
+                time.sleep(0.5)
+                reg_cont.content=st_reg
+                page.update()
+                reg_cont.opacity = 1
+                page.update()
+                time.sleep(0.5)
+            else: 
                     reg_cont.opacity = 0
                     page.update()
                     time.sleep(0.5)
@@ -225,13 +219,12 @@ def main(page: ft.Page):
                     auth_cont.scale=ft.transform.Scale(1)
                     page.update()
                     time.sleep(0.5)
-            else:
-                desc_pass_reg.opacity = 0
-                page.update()
-                time.sleep(0.5)
-                desc_pass_reg.color=ft.colors.RED
-                desc_pass_reg.opacity = 1
-                page.update()
+            desc_pass_reg.opacity = 0
+            page.update()
+            time.sleep(0.5)
+            desc_pass_reg.color=ft.colors.RED
+            desc_pass_reg.opacity = 1
+            page.update()
                 
             page.update()
             
@@ -251,24 +244,22 @@ def main(page: ft.Page):
                 desc_pass_auth.color=ft.colors.GREEN
                 desc_pass_auth.opacity = 1
                 page.update()
-                response_auth = supabase.table('users').select('*').eq('login',login_auth).eq('password', passw_auth).execute()
-                # Проверка, найден ли пользователь
-                if response_auth.data:
-                    darkening_photo.opacity = 0
-                    auth_cont.opacity = 0
-                    header_photo.opacity = 0
-                    city_containers.opacity = 0
-                    map.opacity = 0
-                    header_container.opacity = 0
-                    page.update()
-                    time.sleep(0.5)
-                    route_profile()
                 
-                else: 
-                    auth_cont.opacity = 0
-                    page.update()
-                    time.sleep(0.5)
-                    auth_cont.content=ft.Column([
+                # Проверка, найден ли пользователь
+                darkening_photo.opacity = 0
+                auth_cont.opacity = 0
+                header_photo.opacity = 0
+                city_containers.opacity = 0
+                map.opacity = 0
+                header_container.opacity = 0
+                page.update()
+                time.sleep(0.5)
+                route_profile()
+                 
+                auth_cont.opacity = 0
+                page.update()
+                time.sleep(0.5)
+                auth_cont.content=ft.Column([
                         ft.Row([
                             ft.Image(
                                 src='not new account.png'
@@ -284,26 +275,26 @@ def main(page: ft.Page):
                             ),
                         ],expand=True,alignment=ft.MainAxisAlignment.CENTER),
                     ])
-                    page.update()
-                    time.sleep(0.5)
-                    auth_cont.opacity = 1
-                    page.update()
-                    time.sleep(2)
-                    auth_cont.opacity = 0
-                    page.update()
-                    time.sleep(0.5)
-                    auth_cont.content=st_auth
-                    page.update()
-                    auth_cont.opacity = 1
-                    page.update()
-                    time.sleep(0.5)
-            else:
-                desc_pass_auth.opacity = 0
                 page.update()
                 time.sleep(0.5)
-                desc_pass_auth.color=ft.colors.RED
-                desc_pass_auth.opacity = 1
+                auth_cont.opacity = 1
                 page.update()
+                time.sleep(2)
+                auth_cont.opacity = 0
+                page.update()
+                time.sleep(0.5)
+                auth_cont.content=st_auth
+                page.update()
+                auth_cont.opacity = 1
+                page.update()
+                time.sleep(0.5)
+                
+            desc_pass_auth.opacity = 0
+            page.update()
+            time.sleep(0.5)
+            desc_pass_auth.color=ft.colors.RED
+            desc_pass_auth.opacity = 1
+            page.update()
                 
             page.update()
             
