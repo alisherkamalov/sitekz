@@ -122,7 +122,7 @@ def main(page: ft.Page):
             navigation_bar.opacity = 0
             navigation_bar.offset = ft.transform.Offset(-0.5,0)
             id = supabase.table('users').select('id').execute()
-            page.route = f'/profile/{id.data[0]['id']}/'
+            page.route = "/profile/{}/".format(id.data[0]['id'])
             page.add(add_profile)
             header_container.opacity = 1
             page.update()
@@ -311,8 +311,7 @@ def main(page: ft.Page):
             page.clean()
             adaptive_text.value=f'{page.width}'
             adaptive_text.update
-            try:
-                    if page.route == f'/home/':
+            if page.route == f'/home/':
                         if 1301 <= page.width <= 2544:
                             header_photo.opacity = 1
                             cityes.height = 500
@@ -327,7 +326,7 @@ def main(page: ft.Page):
                             map.offset=ft.transform.Offset(0,0)
                             end_header.offset=ft.transform.Offset(0,0)
                             page.add(add_home_big1)
-                    if page.route == f'/home/':
+            if page.route == f'/home/':
                         if 2545 <= page.width <= 6000:
                             header_photo.opacity = 1
                             cityes.height = 500
@@ -345,7 +344,7 @@ def main(page: ft.Page):
                             black_container.height=410
                             top_container.height=400
                             page.add(add_home_big2)
-                    if page.route == f'/home/':
+            if page.route == f'/home/':
                         if 3800 <= page.width <= 3900:
                             header_photo.opacity = 1
                             cityes.height = 500
@@ -361,7 +360,7 @@ def main(page: ft.Page):
                             end_header.offset=ft.transform.Offset(0,0)
                             map.offset=ft.transform.Offset(0,0)
                             page.add(add_home_big2)
-                    if page.route == f'/home/':
+            if page.route == f'/home/':
                         if 920 <= page.width <= 1300 and page.width != 1024:
                             header_photo.opacity = 1
                             cityes.height = 500
@@ -378,7 +377,7 @@ def main(page: ft.Page):
                             black_container.height=300
                             top_container.height=290
                             page.add(add_home)
-                    if page.route == f'/home/':
+            if page.route == f'/home/':
                         if page.width <= 909:
                             header_photo.opacity = 1
                             darkening_photo.opacity = 1
@@ -388,7 +387,7 @@ def main(page: ft.Page):
                             map.on_hover=None
                             page.add(add_home)
                             mobile()
-                    if page.route == f'/home/':
+            if page.route == f'/home/':
                         if page.width == 912:
                             photo.height=590
                             header_photo.opacity = 1
@@ -401,7 +400,7 @@ def main(page: ft.Page):
                             map.height += 100
                             page.add(add_home)
                             
-                    if page.route == f'/home/':
+            if page.route == f'/home/':
                         if page.width == 1024:
                             photo.height=590
                             header_photo.opacity = 1
@@ -413,7 +412,7 @@ def main(page: ft.Page):
                             header_photo.scale=ft.transform.Scale(2)
                             map.height += 200
                             page.add(add_home)
-                    if page.route == f'/authorization/':
+            if page.route == f'/authorization/':
                         if 1410 <= page.width <= 2544:
                             cityes.height = 500
                             darkening_photo.opacity = 1
@@ -434,7 +433,7 @@ def main(page: ft.Page):
                             big_window()
                             header_photo.scale=ft.transform.Scale(3)
                             page.add(add_auth)
-                    if page.route == f'/authorization/':
+            if page.route == f'/authorization/':
                         if 2545 <= page.width <= 6000:
                             cityes.height = 500
                             darkening_photo.opacity = 1
@@ -457,7 +456,7 @@ def main(page: ft.Page):
                             page.add(add_auth) 
                             
                         
-                    if page.route == f'/authorization/':
+            if page.route == f'/authorization/':
                         if 920 <= page.width <= 1300 and page.width != 1024:
                             cityes.height = 500
                             darkening_photo.opacity = 1
@@ -480,7 +479,7 @@ def main(page: ft.Page):
                             
                         
                             
-                    if page.route == f'/authorization/':
+            if page.route == f'/authorization/':
                         if page.width == 820 and page.width == 768:
                             
                             darkening_photo.opacity = 0
@@ -500,7 +499,7 @@ def main(page: ft.Page):
                             time.sleep(1)
                             mobile()
                             
-                    if page.route == f'/authorization/':
+            if page.route == f'/authorization/':
                         if page.width <= 919:
                             darkening_photo.opacity = 0
                             darkening_photo.height += 300
@@ -518,7 +517,7 @@ def main(page: ft.Page):
                             page.update()
                             time.sleep(1)
                             mobile()
-                    if page.route == f'/authorization/':
+            if page.route == f'/authorization/':
                         if page.width == 1024:
                             darkening_photo.opacity = 1
                             darkening_photo.scale=ft.transform.Scale(1)
@@ -539,9 +538,9 @@ def main(page: ft.Page):
                             page.update()
                             time.sleep(1)
                             laptop()
-                    page.update()
+                            page.update()
                     
-                    if page.route == f'/registration/':
+            if page.route == f'/registration/':
                         if 1410 <= page.width <= 2544:
                             cityes.height = 500
                             darkening_photo.opacity = 1
@@ -564,7 +563,7 @@ def main(page: ft.Page):
                             header_photo.scale=ft.transform.Scale(3)
                             page.add(add_reg)
                             
-                    if page.route == f'/registration/':
+            if page.route == f'/registration/':
                         if 2545 <= page.width <= 6000:
                             cityes.height = 500
                             darkening_photo.opacity = 1
@@ -586,7 +585,7 @@ def main(page: ft.Page):
                             pc()
                             header_photo.scale=ft.transform.Scale(4)
                             page.add(add_reg)
-                    if page.route == f'/registration/':
+            if page.route == f'/registration/':
                         if 920 <= page.width <= 1300 and page.width != 1024:
                             cityes.height = 500
                             darkening_photo.opacity = 1
@@ -607,7 +606,7 @@ def main(page: ft.Page):
                             page.update()
                             time.sleep(1)
                             pc()
-                    if page.route == f'/registration/':
+            if page.route == f'/registration/':
                         if page.width <= 919:
                             darkening_photo.opacity = 0
                             darkening_photo.height = 300
@@ -629,7 +628,7 @@ def main(page: ft.Page):
                             time.sleep(1)
                             mobile()
                             
-                    if page.route == f'/registration/':
+            if page.route == f'/registration/':
                         if page.width == 820 and page.width == 768:
                             darkening_photo.opacity = 0
                             city1_container.on_hover=None
@@ -647,7 +646,7 @@ def main(page: ft.Page):
                             page.update()
                             time.sleep(1)
                             mobile()
-                    if page.route == f'/registration/':
+            if page.route == f'/registration/':
                         if page.width == 1024:
                             darkening_photo.opacity = 1
                             darkening_photo.scale=ft.transform.Scale(1)
@@ -669,8 +668,7 @@ def main(page: ft.Page):
                             page.update()
                             time.sleep(1)
                             laptop()
-            finally:
-                    print('Загружены все экраны')
+            
             
                     
                 
