@@ -687,7 +687,7 @@ def main(page: ft.Page):
         our_number.on_hover=hover_our_num
         profile.on_hover=hover
         
-        def menu_header_close(self):
+        def menu_header_close(_):
             
             menu_header_close_part1_init()
             page.update()
@@ -703,7 +703,7 @@ def main(page: ft.Page):
             menu_button.on_click = menu_header_open
             page.update()
         
-        def menu_header_open(self):
+        def menu_header_open(_):
             menu_header_open_part1_init()
             page.update()
             menu_header_open_part2_init()
