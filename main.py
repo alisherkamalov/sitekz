@@ -21,7 +21,7 @@ from mhc import menu_header_close_part1_init,menu_header_close_part2_init,menu_h
 
 
 def main(page: ft.Page):
-        page.route = f'/home/'
+        page.route = f'/'
         page.bgcolor='white'
         page.scroll = 'auto'
         page.padding = 0
@@ -45,7 +45,7 @@ def main(page: ft.Page):
             
         def home_view(event):
             page.clean()
-            page.route = f'/home/'
+            page.route = f'/'
             auth_cont.opacity = 0
             auth_cont.scale=ft.transform.Scale(0.9)
             reg_cont.opacity = 0
@@ -733,10 +733,8 @@ def main(page: ft.Page):
         map.offset=ft.transform.Offset(0,1)
         page_adaptive(None)
         page.update()
-if __name__ == '__main__':
-    ft.app(
+ft.app(
         main,
         assets_dir='assets',
-        view=ft.WEB_BROWSER,
-        port=5252
+        view=ft.AppView.WEB_BROWSER
     )
