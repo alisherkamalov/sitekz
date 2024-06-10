@@ -1,6 +1,6 @@
 import flet as ft 
 end_img = ft.Image(
-                                    src='end_image.jpg',
+                                    src='https://raw.githubusercontent.com/alisherkamalov/sitekz/main/end_image.jpg',
                                     expand=True
                                 )
 cont_img = ft.Container (
