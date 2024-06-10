@@ -2,7 +2,7 @@ import flet as ft
 
 map_photo = ft.Image(
     expand=True,
-    src='map.png',
+    src='https://raw.githubusercontent.com/alisherkamalov/sitekz/main/map.png',
     animate_opacity=500,
 )
 
