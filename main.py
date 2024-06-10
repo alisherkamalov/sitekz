@@ -21,7 +21,7 @@ from mhc import menu_header_close_part1_init,menu_header_close_part2_init,menu_h
 
 
 def main(page: ft.Page):
-        page.route = f'/'
+        page.route = f'/home'
         page.bgcolor='white'
         page.scroll = 'auto'
         page.padding = 0
@@ -45,7 +45,7 @@ def main(page: ft.Page):
             
         def home_view(event):
             page.clean()
-            page.route = f'/'
+            page.route = f'/home'
             auth_cont.opacity = 0
             auth_cont.scale=ft.transform.Scale(0.9)
             reg_cont.opacity = 0
