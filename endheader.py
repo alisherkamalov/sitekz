@@ -19,7 +19,7 @@ black_container = ft.Container (
 
 
 img_name_site = ft.Image(
-            src='thebestkazakhstan.png',
+            src='https://raw.githubusercontent.com/alisherkamalov/sitekz/main/thebestkazakhstan.png',
             width=200,
             offset=ft.transform.Offset(0,-0.5)
         )
