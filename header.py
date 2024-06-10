@@ -44,7 +44,7 @@ class ServicesContainer(ft.Container):
         ],spacing=35)
 
 logo_img = ft.Image(
-        src = 'logo.png',
+        src = 'https://raw.githubusercontent.com/alisherkamalov/sitekz/main/logo.png',
         scale=ft.transform.Scale(1.070),
         animate_opacity=500
         
