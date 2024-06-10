@@ -88,7 +88,7 @@ menu_button = ft.IconButton(
         
         
 header_photo = ft.Image (
-                src='end_header.jpg',
+                src='https://raw.githubusercontent.com/alisherkamalov/sitekz/main/end_header.jpg',
             )
 
 darkening_photo = ft.Container (
