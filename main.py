@@ -735,6 +735,5 @@ def main(page: ft.Page):
         page.update()
 ft.app(
         main,
-        assets_dir='assets',
         view=ft.AppView.WEB_BROWSER
     )
